@@ -1,6 +1,10 @@
 # awstagger
-Tag AWS resources for beanstalk environment. Beanstalk doesn't tag everything to do with your AWS account. 
-
+Tag AWS resources for beanstalk environment. Beanstalk doesn't tag everything to do with your AWS account. Automatically tag:
+ - S3
+ - Elasticache
+ - Cloudwatch log stream
+ - EBS volume
+      
 ## How to use
 
 cat ./config.json | ACCOUNT_ID=1111111111111 CLUSTER_NODES="node-001 node-002" REGION="ap-southeast-2" VERSION="0.1dev" go run ./main.go
