@@ -203,7 +203,7 @@ func tagEC2Volumes() error {
 type promFunc func() error
 
 //Create a promise style function
-func promise(funcs []promFunc) {
+func promise(funcs ...promFunc) {
 	for _, f := range funcs {
 		if err := f(); err != nil {
 			panic(err)
@@ -216,7 +216,7 @@ func main() {
 
 	startup()
 
-	promise([]promFunc{
+	promise(
 		func() error {
 			fmt.Println("Read config file")
 			return readConfigFile()
@@ -237,5 +237,5 @@ func main() {
 			fmt.Println("Tagging EC2 Volumes")
 			return tagEC2Volumes()
 		},
-	})
+	)
 }
